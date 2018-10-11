@@ -7,27 +7,27 @@ int yCor =170;
 
 void setup() {
   size(900,900);
+  
 }
 
 void draw() {
-  background(30,30,70);
-  hauntedHouse();
+  
   if(count==1){
-      //translate(-7950,-10350);
-      //scale(60.0);
      frameRate(10);
      if(scale<61){
        translate(xPan,yPan);
        xPan-=134.7457627;
        yPan-=175.4237288;
        scale(scale);
-       scale+=1;
      }
-     else{
-     background(255,255,0);
+     scale+=1;
      }
-  }
-  
+       background(30,30,70);
+     hauntedHouse();
+     if(scale>61){
+       background(255,255,0);
+       scale=62;
+     }
 }
 
 void hauntedHouse(){
