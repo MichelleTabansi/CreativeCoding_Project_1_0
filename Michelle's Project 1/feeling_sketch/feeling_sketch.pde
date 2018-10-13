@@ -1,3 +1,5 @@
+//scary
+
 int count = 0;
 float scale = 1;
 float xPan = 0;
@@ -35,19 +37,19 @@ void draw() {
         }
         
         sec++;
-        if(sec<150 && sec>45){
+        if(sec<150 && sec>60){
          if(xSmile<500){
              xSmile+=5;
              ySmile+=5;
          }
         }
-           if(sec>170 && sec%10==0 && sec < 300){
+           if(sec>170 && sec%15==0 && sec < 250){
              frameRate(5);
            background(0);
          angryFace();
        }
        
-       if(sec >350){
+       if(sec >320){
              angryFace();
        }
        
