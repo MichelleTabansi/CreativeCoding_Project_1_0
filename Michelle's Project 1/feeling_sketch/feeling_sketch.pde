@@ -179,5 +179,8 @@ void hauntedHouse(){
 void mousePressed(){
   if(mousePressed==true){
      count++;
+     if(count>1){
+      count=1; 
+     }
   }
 }
