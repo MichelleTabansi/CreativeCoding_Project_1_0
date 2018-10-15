@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw() {
-  frameRate(30);
+  frameRate(20);
   if(count==1){
      frameRate(10);
      if(scale<61){
