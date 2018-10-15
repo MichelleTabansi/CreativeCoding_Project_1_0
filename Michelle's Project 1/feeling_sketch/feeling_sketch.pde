@@ -16,7 +16,7 @@ void setup() {
 }
 
 void draw() {
-  frameRate(20);
+  frameRate(40);
   if(count==1){
      frameRate(10);
      if(scale<61){
@@ -31,7 +31,7 @@ void draw() {
        background(0,0,70);
      hauntedHouse();
      storm();
-     if(otherSec%100==0){
+     if(otherSec%120==0){
        lightning();
        hauntedHouse();
        
@@ -52,19 +52,20 @@ void draw() {
              ySmile+=5;
          }
         }
-           if(sec>150 && sec%15==0 && sec < 250){
+           if(sec>170 && sec%20==0 && sec < 250){
            frameRate(5);
            background(0);
            angryFace();
        }
        
-       if(sec >270&& sec<370){
+       if(sec >270){
              angryFace();
        }
        
-            if(sec>350){
+            if(sec>400){
        background(150,0,0);
-       for(int i=0;i<15;i++){
+       frameRate(40);
+       for(int i=0;i<20;i++){
          float spiX= random(0,900);
          float spiY = random(0,900);
          spider(spiX,spiY);
@@ -287,7 +288,7 @@ void hauntedHouse(){
 void mousePressed(){
   if(mousePressed==true){
      count++;
-     if(count>2){
+     if(count>1){
       count=1; 
      }
   }
