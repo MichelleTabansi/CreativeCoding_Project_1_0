@@ -10,12 +10,13 @@ int xSmile = 50;
 int ySmile = 50;
 int size=30;
 int sec =0;
+int otherSec =0;
 void setup() {
   size(900,900); 
 }
 
 void draw() {
-  
+  frameRate(30);
   if(count==1){
      frameRate(10);
      if(scale<61){
@@ -26,8 +27,16 @@ void draw() {
      }
      scale+=1;
      }
-       background(30,30,70);
+     otherSec++;
+       background(0,0,70);
      hauntedHouse();
+     storm();
+     if(otherSec%100==0){
+       lightning();
+       hauntedHouse();
+       
+     }
+     
      if(scale>61){
            background(255,255,0);
            scale=62;
@@ -37,23 +46,68 @@ void draw() {
         }
         
         sec++;
-        if(sec<150 && sec>60){
+        if(sec<150 && sec>50){
          if(xSmile<500){
              xSmile+=5;
              ySmile+=5;
          }
         }
-           if(sec>170 && sec%15==0 && sec < 250){
-             frameRate(5);
+           if(sec>150 && sec%15==0 && sec < 250){
+           frameRate(5);
            background(0);
-         angryFace();
+           angryFace();
        }
        
-       if(sec >320){
+       if(sec >270&& sec<370){
              angryFace();
        }
        
+            if(sec>350){
+       background(150,0,0);
+       for(int i=0;i<15;i++){
+         float spiX= random(0,900);
+         float spiY = random(0,900);
+         spider(spiX,spiY);
+          //background(255,0,0);
+          //spider(450,450);
+       }
+       }
      }
+     
+
+}
+
+void storm(){
+ for(int i =0;i<700;i++){
+  rain();
+ }
+}
+void lightning(){
+  frameRate(10);
+  boolean button = true;
+  for(int i =0;i<10;i++){
+    //if(scared == 430){
+        if(button){
+          background(0,0,150);
+          button = !button;
+        }
+        else{
+         background(255);
+         button = !button;
+        }
+                      }
+}
+void rain(){
+  float rainX = random(0,900);
+  float rainY = random(0,900);
+  rainDrop(rainX, rainY);
+  rainY--;
+}
+
+void rainDrop(float x, float y){
+   stroke(140,100);
+   strokeWeight(5);
+   line(x,y, x,y+7);
 }
 
 void ghostFace(){
@@ -75,6 +129,60 @@ void ghostFace(){
    stroke(0);
    strokeWeight(5);
    arc(450, 400, xSmile*size, ySmile*size, 0, PI);
+}
+
+void spider(float xC,float yC){
+    strokeWeight(1);
+  stroke(255);
+  fill(0);
+   ellipse(xC,yC,300,300);
+  ellipse(xC,yC+125,200,200);
+  fill(255,255,0);
+  noStroke();
+  //rect(310,490,50,5);
+  //rect(390,490,50,5);
+  triangle(xC-65,yC+80,xC-65,yC+100,xC-15,yC+100);
+  triangle(xC+65,yC+80,xC+65,yC+100,xC+15,yC+100);
+  fill(255,0,0);
+  arc(xC, yC+135, 130, 130, 0, PI, CHORD);
+  fill(255);
+  triangle(xC-40,yC+135, xC-20,yC+135,xC-30,yC +175);
+  triangle(xC+40,yC+135,xC+20,yC+135,xC+30,yC+175);
+  
+  strokeWeight(10);
+  stroke(0);
+  beginShape(LINES);
+  vertex(xC-140,yC+50);
+  vertex(xC-270,yC-30);
+  vertex(xC-270,yC-30);
+  vertex(xC-305,yC+20);
+  
+  vertex(xC-140,yC);
+  vertex(xC-250,yC-80);
+  vertex(xC-250,yC-80);
+  vertex(xC-305,yC-30);
+  
+  vertex(xC-140,yC-50);
+  vertex(xC-230,yC-130);
+  vertex(xC-230,yC-130);
+  vertex(xC-280,yC-90);
+  
+  vertex(xC+140,yC+50);
+  vertex(xC+270,yC-30);
+  vertex(xC+270,yC-30);
+  vertex(xC+305,yC+20);
+  
+  vertex(xC+140,yC);
+  vertex(xC+250,yC-80);
+  vertex(xC+250,yC-80);
+  vertex(xC+305,yC-30);
+  
+  vertex(xC+140,yC-50);
+  vertex(xC+230,yC-130);
+  vertex(xC+230,yC-130);
+  vertex(xC+280,yC-90);
+
+  endShape();
 }
 
 void angryFace(){
@@ -179,7 +287,7 @@ void hauntedHouse(){
 void mousePressed(){
   if(mousePressed==true){
      count++;
-     if(count>1){
+     if(count>2){
       count=1; 
      }
   }
