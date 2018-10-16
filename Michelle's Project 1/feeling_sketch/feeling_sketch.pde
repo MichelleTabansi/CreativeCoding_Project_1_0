@@ -1,5 +1,5 @@
 //scary
-
+float angle = PI/10;
 int count = 0;
 float scale = 1;
 float xPan = 0;
@@ -48,8 +48,8 @@ void draw() {
         sec++;
         if(sec<150 && sec>50){
          if(xSmile<500){
-             xSmile+=5;
-             ySmile+=5;
+             xSmile+=10;
+             ySmile+=10;
          }
         }
            if(sec>170 && sec%20==0 && sec < 250){
@@ -57,25 +57,48 @@ void draw() {
            background(0);
            angryFace();
        }
-       
-       if(sec >270){
-             angryFace();
+       if(sec>170 && sec%20==1 && sec < 250){
+          background(0);
+           design();
        }
        
-            if(sec>400){
-       background(150,0,0);
+       if(sec >270 ){
+         frameRate(10);
+             angryFace();
+              if(sec>290 && sec%10==0)
+       {
+                background(150,0,0);
        frameRate(40);
        for(int i=0;i<20;i++){
          float spiX= random(0,900);
          float spiY = random(0,900);
          spider(spiX,spiY);
-          //background(255,0,0);
-          //spider(450,450);
        }
        }
-     }
+       else if(sec>300 || sec%10==5){
+         background(0);
+         design();
+       }
+
+       }
+      
+       }
+     
      
 
+}
+void design(){
+stroke(255,0,0);
+strokeWeight(0.1);
+translate(width/2, height/2);
+
+
+for (int i = 0; i < 1000; i++) {
+  rotate(angle);
+   scale(1.01);
+  line(10, -15, 10, 15);
+}
+angle++;
 }
 
 void storm(){
@@ -120,6 +143,11 @@ void ghostFace(){
    stroke(0);
    ellipse(325,300,200*size,200*size);
    ellipse(575,300,200*size,200*size);
+   noFill();
+   ellipse(325,300,150*size,150*size);
+   ellipse(575,300,150*size,150*size);
+   ellipse(325,300,100*size,100*size);
+   ellipse(575,300,100*size,100*size);
    //pupils
    noStroke();
    fill(255,255,0);
