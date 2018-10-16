@@ -31,7 +31,7 @@ void draw() {
        background(0,0,70);
      hauntedHouse();
      storm();
-     if(otherSec%120==0){
+     if(otherSec%170==0 || otherSec%170==3){
        lightning();
        hauntedHouse();
        
